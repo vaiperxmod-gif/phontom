@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -8,26 +7,47 @@
 <title>VaiperX Panel</title>
 
 <style>
+
+/* ========================================
+   RESET
+======================================== */
+
 * {
     box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     height: 100%;
+
     background: #000;
+
     overflow: hidden;
 }
 
 body {
     display: flex;
+
     justify-content: center;
     align-items: center;
+
+    font-family:
+        Arial,
+        "Noto Sans Thai",
+        sans-serif;
 }
 
+
+/* ========================================
+   MAIN UI
+======================================== */
+
 .ui {
+
     position: relative;
 
     width: 100vw;
@@ -35,20 +55,31 @@ body {
 
     max-width: 600px;
 
-    background-image: url("https://i.postimg.cc/fLM5jYkf/3639e376-31c1-438f-bf76-5b6c02a314a4.png");
+    background-image:
+        url("https://i.postimg.cc/fLM5jYkf/3639e376-31c1-438f-bf76-5b6c02a314a4.png");
 
     background-size: cover;
+
     background-position: center;
+
     background-repeat: no-repeat;
 
     overflow: hidden;
 }
 
+
+/* ========================================
+   CLICKABLE BUTTON AREA
+======================================== */
+
 .hotspot {
+
     position: absolute;
 
     left: 7%;
+
     width: 86%;
+
     height: 7.8%;
 
     border-radius: 30px;
@@ -59,37 +90,60 @@ body {
 
     cursor: pointer;
 
-    transition: all 0.2s ease;
+    transition:
+        transform 0.2s ease;
 
     -webkit-tap-highlight-color: transparent;
 }
 
 
-/* =========================
-   ตำแหน่งปุ่ม
-========================= */
+/* ========================================
+   BUTTON POSITIONS
+======================================== */
 
-/* ปุ่ม 1 ขึ้น 3% */
+
+/* ปุ่ม 1
+   เว็บยืนยันคีย์
+   ขึ้น 3%
+*/
+
 .key {
+
     top: 46.8%;
+
 }
 
-/* ปุ่ม 2 ลง 1% */
+
+/* ปุ่ม 2
+   โหลดแอป
+   ลง 1%
+*/
+
 .app {
+
     top: 60.2%;
+
 }
 
-/* ปุ่ม 3 ลง 3% */
+
+/* ปุ่ม 3
+   คลิปสอน
+   ลง 3%
+*/
+
 .tutorial {
+
     top: 71.6%;
+
 }
 
 
-/* =========================
-   เอฟเฟกต์
-========================= */
+/* ========================================
+   BUTTON EFFECT
+======================================== */
 
 .hotspot::after {
+
     content: "";
 
     position: absolute;
@@ -98,89 +152,620 @@ body {
 
     border-radius: 30px;
 
-    background: rgba(255,255,255,0.10);
+    background:
+        rgba(255,255,255,0.10);
 
-    border: 1px solid rgba(255,255,255,0.35);
+    border:
+        1px solid rgba(255,255,255,0.35);
 
     box-shadow:
-        0 0 20px rgba(255,255,255,0.25),
-        inset 0 0 15px rgba(255,255,255,0.08);
+
+        0 0 20px
+        rgba(255,255,255,0.25),
+
+        inset 0 0 15px
+        rgba(255,255,255,0.08);
 
     opacity: 0;
 
-    transition: all 0.2s ease;
+    transition:
+        all 0.2s ease;
+
+    pointer-events: none;
 }
+
+
+/* Hover */
 
 .hotspot:hover::after {
+
     opacity: 1;
+
 }
+
+
+/* กดปุ่ม */
 
 .hotspot:active {
-    transform: scale(0.97);
+
+    transform:
+        scale(0.97);
+
 }
+
 
 .hotspot:active::after {
+
     opacity: 1;
 
-    background: rgba(255,255,255,0.16);
+    background:
+        rgba(255,255,255,0.16);
 
     box-shadow:
-        0 0 35px rgba(255,255,255,0.7),
-        inset 0 0 20px rgba(255,255,255,0.2);
+
+        0 0 35px
+        rgba(255,255,255,0.7),
+
+        inset 0 0 20px
+        rgba(255,255,255,0.2);
+
 }
 
 
-/* =========================
-   Responsive
-========================= */
+/* ========================================
+   POPUP OVERLAY
+======================================== */
+
+.popup-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    background:
+        rgba(0,0,0,0.75);
+
+    backdrop-filter:
+        blur(9px);
+
+    -webkit-backdrop-filter:
+        blur(9px);
+
+    z-index: 9999;
+
+}
+
+
+/* เปิด Popup */
+
+.popup-overlay.show {
+
+    display: flex;
+
+}
+
+
+/* ========================================
+   POPUP BOX
+======================================== */
+
+.popup {
+
+    width:
+        min(90vw, 360px);
+
+    padding:
+        27px 22px 22px;
+
+    border-radius:
+        24px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(38,38,38,0.98),
+            rgba(4,4,4,0.99)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    box-shadow:
+
+        0 0 45px
+        rgba(255,255,255,0.12),
+
+        inset 0 0 25px
+        rgba(255,255,255,0.04);
+
+    text-align:
+        center;
+
+    transform:
+        scale(0.85);
+
+    opacity:
+        0;
+
+    transition:
+        all 0.25s ease;
+
+}
+
+
+/* Popup Animation */
+
+.popup-overlay.show .popup {
+
+    transform:
+        scale(1);
+
+    opacity:
+        1;
+
+}
+
+
+/* ========================================
+   POPUP TITLE
+======================================== */
+
+.popup-title {
+
+    color:
+        #fff;
+
+    font-size:
+        23px;
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        1px;
+
+    margin-bottom:
+        7px;
+
+}
+
+
+/* ========================================
+   POPUP SUBTITLE
+======================================== */
+
+.popup-subtitle {
+
+    color:
+        #999;
+
+    font-size:
+        14px;
+
+    margin-bottom:
+        22px;
+
+}
+
+
+/* ========================================
+   OS BUTTON
+======================================== */
+
+.os-button {
+
+    width:
+        100%;
+
+    min-height:
+        58px;
+
+    margin-top:
+        12px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+    border-radius:
+        16px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.12),
+            rgba(255,255,255,0.04)
+        );
+
+    color:
+        #fff;
+
+    font-size:
+        17px;
+
+    font-weight:
+        800;
+
+    cursor:
+        pointer;
+
+    transition:
+        all 0.2s ease;
+
+    box-shadow:
+
+        0 0 15px
+        rgba(255,255,255,0.05);
+
+    -webkit-tap-highlight-color:
+        transparent;
+
+}
+
+
+/* Hover */
+
+.os-button:hover {
+
+    background:
+        rgba(255,255,255,0.18);
+
+    border-color:
+        rgba(255,255,255,0.55);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(255,255,255,0.18);
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* Click */
+
+.os-button:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+/* ========================================
+   CLOSE BUTTON
+======================================== */
+
+.close-button {
+
+    width:
+        100%;
+
+    min-height:
+        45px;
+
+    margin-top:
+        18px;
+
+    border:
+        0;
+
+    border-radius:
+        14px;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    color:
+        #888;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+    transition:
+        all 0.2s ease;
+
+}
+
+
+.close-button:hover {
+
+    color:
+        #fff;
+
+    background:
+        rgba(255,255,255,0.10);
+
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
 
 @media (max-width: 600px) {
 
     .ui {
-        width: 100vw;
-        height: 100vh;
 
-        background-size: cover;
-        background-position: center;
+        width:
+            100vw;
+
+        height:
+            100vh;
+
+        background-size:
+            cover;
+
+        background-position:
+            center;
+
     }
 
 }
+
 </style>
+
 </head>
+
 
 <body>
 
+
+<!-- ========================================
+     MAIN UI
+======================================== -->
+
 <div class="ui">
 
-    <!-- ปุ่ม 1 : เว็บยืนยันคีย์ -->
+
+    <!-- ====================================
+         BUTTON 1
+         เว็บยืนยันคีย์
+    ===================================== -->
+
     <a
+
         class="hotspot key"
+
         href="https://client.nulldash.store/"
+
         target="_blank"
+
         rel="noopener noreferrer"
+
         aria-label="เว็บยืนยันคีย์">
+
     </a>
 
 
-    <!-- ปุ่ม 2 : ลิ้งแอป -->
-    <a
+
+    <!-- ====================================
+         BUTTON 2
+         โหลดแอป
+         เปิด Popup
+    ===================================== -->
+
+    <div
+
         class="hotspot app"
-        href="https://apps.apple.com/th/app/happ-proxy-utility/id6504287215?l=th"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="ลิ้งแอป">
-    </a>
+
+        onclick="openOSPopup()"
+
+        aria-label="ดาวน์โหลดแอป">
+
+    </div>
 
 
-    <!-- ปุ่ม 3 : คลิปสอนลงและใช้งาน -->
+
+    <!-- ====================================
+         BUTTON 3
+         คลิปสอนลงและใช้งาน
+    ===================================== -->
+
     <a
+
         class="hotspot tutorial"
-        href="#"
+
+        href="https://youtu.be/BqrmISOIIMU?si=9Y6i5avz0wAeJcuj"
+
+        target="_blank"
+
+        rel="noopener noreferrer"
+
         aria-label="คลิปสอนลงและใช้งาน">
+
     </a>
+
 
 </div>
 
+
+
+<!-- ========================================
+     OS POPUP
+======================================== -->
+
+<div
+
+    class="popup-overlay"
+
+    id="osPopup"
+
+    onclick="closeOSPopup(event)">
+
+
+    <div
+
+        class="popup"
+
+        onclick="event.stopPropagation()">
+
+
+        <!-- TITLE -->
+
+        <div class="popup-title">
+
+            เลือกระบบของคุณ
+
+        </div>
+
+
+        <!-- SUBTITLE -->
+
+        <div class="popup-subtitle">
+
+            กรุณาเลือกอุปกรณ์ที่ต้องการดาวน์โหลด
+
+        </div>
+
+
+
+        <!-- =================================
+             IOS
+        ================================== -->
+
+        <button
+
+            class="os-button"
+
+            onclick="openIOS()">
+
+            🍎 &nbsp; iOS
+
+        </button>
+
+
+
+        <!-- =================================
+             ANDROID
+        ================================== -->
+
+        <button
+
+            class="os-button"
+
+            onclick="openAndroid()">
+
+            🤖 &nbsp; Android
+
+        </button>
+
+
+
+        <!-- =================================
+             CLOSE
+        ================================== -->
+
+        <button
+
+            class="close-button"
+
+            onclick="closeOSPopup()">
+
+            ยกเลิก
+
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* ========================================
+   OPEN POPUP
+======================================== */
+
+function openOSPopup() {
+
+    document
+        .getElementById("osPopup")
+        .classList.add("show");
+
+}
+
+
+/* ========================================
+   CLOSE POPUP
+======================================== */
+
+function closeOSPopup(event) {
+
+    if (
+        event &&
+        event.target !== event.currentTarget
+    ) {
+
+        return;
+
+    }
+
+
+    document
+        .getElementById("osPopup")
+        .classList.remove("show");
+
+}
+
+
+/* ========================================
+   OPEN IOS
+======================================== */
+
+function openIOS() {
+
+    window.open(
+
+        "https://apps.apple.com/th/app/happ-proxy-utility/id6504287215?l=th",
+
+        "_blank"
+
+    );
+
+}
+
+
+/* ========================================
+   OPEN ANDROID
+======================================== */
+
+function openAndroid() {
+
+    window.open(
+
+        "https://play.google.com/store/apps/details?id=com.happproxy&pcampaignid=web_share",
+
+        "_blank"
+
+    );
+
+}
+
+</script>
+
+
 </body>
 </html>
-```
