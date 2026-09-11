@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
 
 <title>VaiperX Panel</title>
 
@@ -38,6 +43,7 @@ body {
     font-family:
         Arial,
         "Noto Sans Thai",
+        "Tahoma",
         sans-serif;
 }
 
@@ -55,8 +61,14 @@ body {
 
     max-width: 600px;
 
+    background-color: #000;
+
+    /* ====================================
+       พื้นหลัง UI - ลิงก์ใหม่
+    ==================================== */
+
     background-image:
-        url("https://i.postimg.cc/fLM5jYkf/3639e376-31c1-438f-bf76-5b6c02a314a4.png");
+        url("https://img2.pic.in.th/3639e376-31c1-438f-bf76-5b6c02a314a4-1.png");
 
     background-size: cover;
 
@@ -84,7 +96,7 @@ body {
 
     border-radius: 30px;
 
-    background: rgba(255,255,255,0);
+    background: transparent;
 
     text-decoration: none;
 
@@ -94,6 +106,8 @@ body {
         transform 0.2s ease;
 
     -webkit-tap-highlight-color: transparent;
+
+    z-index: 10;
 }
 
 
@@ -104,7 +118,6 @@ body {
 
 /* ปุ่ม 1
    เว็บยืนยันคีย์
-   ขึ้น 3%
 */
 
 .key {
@@ -115,8 +128,7 @@ body {
 
 
 /* ปุ่ม 2
-   โหลดแอป
-   ลง 1%
+   ดาวน์โหลดแอป
 */
 
 .app {
@@ -128,7 +140,6 @@ body {
 
 /* ปุ่ม 3
    คลิปสอน
-   ลง 3%
 */
 
 .tutorial {
@@ -156,7 +167,8 @@ body {
         rgba(255,255,255,0.10);
 
     border:
-        1px solid rgba(255,255,255,0.35);
+        1px solid
+        rgba(255,255,255,0.35);
 
     box-shadow:
 
@@ -175,7 +187,9 @@ body {
 }
 
 
-/* Hover */
+/* ========================================
+   HOVER
+======================================== */
 
 .hotspot:hover::after {
 
@@ -184,7 +198,9 @@ body {
 }
 
 
-/* กดปุ่ม */
+/* ========================================
+   CLICK
+======================================== */
 
 .hotspot:active {
 
@@ -231,7 +247,7 @@ body {
     padding: 20px;
 
     background:
-        rgba(0,0,0,0.75);
+        rgba(0,0,0,0.78);
 
     backdrop-filter:
         blur(9px);
@@ -240,11 +256,12 @@ body {
         blur(9px);
 
     z-index: 9999;
-
 }
 
 
-/* เปิด Popup */
+/* ========================================
+   SHOW POPUP
+======================================== */
 
 .popup-overlay.show {
 
@@ -299,11 +316,12 @@ body {
 
     transition:
         all 0.25s ease;
-
 }
 
 
-/* Popup Animation */
+/* ========================================
+   POPUP ANIMATION
+======================================== */
 
 .popup-overlay.show .popup {
 
@@ -312,7 +330,6 @@ body {
 
     opacity:
         1;
-
 }
 
 
@@ -336,7 +353,6 @@ body {
 
     margin-bottom:
         7px;
-
 }
 
 
@@ -352,9 +368,11 @@ body {
     font-size:
         14px;
 
+    line-height:
+        1.5;
+
     margin-bottom:
         22px;
-
 }
 
 
@@ -410,11 +428,12 @@ body {
 
     -webkit-tap-highlight-color:
         transparent;
-
 }
 
 
-/* Hover */
+/* ========================================
+   OS BUTTON HOVER
+======================================== */
 
 .os-button:hover {
 
@@ -431,17 +450,17 @@ body {
 
     transform:
         translateY(-2px);
-
 }
 
 
-/* Click */
+/* ========================================
+   OS BUTTON CLICK
+======================================== */
 
 .os-button:active {
 
     transform:
         scale(0.97);
-
 }
 
 
@@ -484,8 +503,14 @@ body {
     transition:
         all 0.2s ease;
 
+    -webkit-tap-highlight-color:
+        transparent;
 }
 
+
+/* ========================================
+   CLOSE HOVER
+======================================== */
 
 .close-button:hover {
 
@@ -494,7 +519,6 @@ body {
 
     background:
         rgba(255,255,255,0.10);
-
 }
 
 
@@ -517,9 +541,47 @@ body {
 
         background-position:
             center;
+    }
+}
 
+
+/* ========================================
+   SMALL HEIGHT DEVICES
+======================================== */
+
+@media (max-height: 650px) {
+
+    .popup {
+
+        max-height:
+            90vh;
+
+        overflow-y:
+            auto;
     }
 
+    .os-button {
+
+        min-height:
+            52px;
+    }
+}
+
+
+/* ========================================
+   IOS / MOBILE SAFE AREA
+======================================== */
+
+@supports (padding: env(safe-area-inset-top)) {
+
+    .popup-overlay {
+
+        padding-top:
+            calc(20px + env(safe-area-inset-top));
+
+        padding-bottom:
+            calc(20px + env(safe-area-inset-bottom));
+    }
 }
 
 </style>
@@ -543,61 +605,43 @@ body {
     ===================================== -->
 
     <a
-
         class="hotspot key"
-
         href="https://client.nulldash.store/"
-
         target="_blank"
-
         rel="noopener noreferrer"
-
-        aria-label="เว็บยืนยันคีย์">
-
-    </a>
-
+        aria-label="เว็บยืนยันคีย์"
+    ></a>
 
 
     <!-- ====================================
          BUTTON 2
-         โหลดแอป
-         เปิด Popup
+         ดาวน์โหลดแอป
     ===================================== -->
 
     <div
-
         class="hotspot app"
-
         onclick="openOSPopup()"
-
-        aria-label="ดาวน์โหลดแอป">
-
-    </div>
-
+        role="button"
+        tabindex="0"
+        aria-label="ดาวน์โหลดแอป"
+    ></div>
 
 
     <!-- ====================================
          BUTTON 3
-         คลิปสอนลงและใช้งาน
+         คลิปสอน
     ===================================== -->
 
     <a
-
         class="hotspot tutorial"
-
         href="https://youtu.be/BqrmISOIIMU?si=9Y6i5avz0wAeJcuj"
-
         target="_blank"
-
         rel="noopener noreferrer"
-
-        aria-label="คลิปสอนลงและใช้งาน">
-
-    </a>
+        aria-label="คลิปสอนลงและใช้งาน"
+    ></a>
 
 
 </div>
-
 
 
 <!-- ========================================
@@ -605,19 +649,16 @@ body {
 ======================================== -->
 
 <div
-
     class="popup-overlay"
-
     id="osPopup"
-
-    onclick="closeOSPopup(event)">
+    onclick="closeOSPopup(event)"
+>
 
 
     <div
-
         class="popup"
-
-        onclick="event.stopPropagation()">
+        onclick="event.stopPropagation()"
+    >
 
 
         <!-- TITLE -->
@@ -638,21 +679,19 @@ body {
         </div>
 
 
-
         <!-- =================================
              IOS
         ================================== -->
 
         <button
-
             class="os-button"
-
-            onclick="openIOS()">
+            type="button"
+            onclick="openIOS()"
+        >
 
             🍎 &nbsp; iOS
 
         </button>
-
 
 
         <!-- =================================
@@ -660,15 +699,14 @@ body {
         ================================== -->
 
         <button
-
             class="os-button"
-
-            onclick="openAndroid()">
+            type="button"
+            onclick="openAndroid()"
+        >
 
             🤖 &nbsp; Android
 
         </button>
-
 
 
         <!-- =================================
@@ -676,10 +714,10 @@ body {
         ================================== -->
 
         <button
-
             class="close-button"
-
-            onclick="closeOSPopup()">
+            type="button"
+            onclick="closeOSPopup()"
+        >
 
             ยกเลิก
 
@@ -691,9 +729,7 @@ body {
 </div>
 
 
-
 <script>
-
 
 /* ========================================
    OPEN POPUP
@@ -701,10 +737,12 @@ body {
 
 function openOSPopup() {
 
-    document
-        .getElementById("osPopup")
-        .classList.add("show");
+    const popup =
+        document.getElementById("osPopup");
 
+    if (!popup) return;
+
+    popup.classList.add("show");
 }
 
 
@@ -714,20 +752,20 @@ function openOSPopup() {
 
 function closeOSPopup(event) {
 
+    const popup =
+        document.getElementById("osPopup");
+
+    if (!popup) return;
+
     if (
         event &&
         event.target !== event.currentTarget
     ) {
 
         return;
-
     }
 
-
-    document
-        .getElementById("osPopup")
-        .classList.remove("show");
-
+    popup.classList.remove("show");
 }
 
 
@@ -737,14 +775,13 @@ function closeOSPopup(event) {
 
 function openIOS() {
 
+    const url =
+        "https://apps.apple.com/th/app/happ-proxy-utility/id6504287215?l=th";
+
     window.open(
-
-        "https://apps.apple.com/th/app/happ-proxy-utility/id6504287215?l=th",
-
+        url,
         "_blank"
-
     );
-
 }
 
 
@@ -754,12 +791,61 @@ function openIOS() {
 
 function openAndroid() {
 
+    const url =
+        "https://play.google.com/store/apps/details?id=com.happproxy&pcampaignid=web_share";
+
     window.open(
-
-        "https://play.google.com/store/apps/details?id=com.happproxy&pcampaignid=web_share",
-
+        url,
         "_blank"
+    );
+}
 
+
+/* ========================================
+   ESC TO CLOSE
+======================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            closeOSPopup();
+
+        }
+
+    }
+);
+
+
+/* ========================================
+   APP BUTTON KEYBOARD SUPPORT
+======================================== */
+
+const appButton =
+    document.querySelector(".hotspot.app");
+
+if (appButton) {
+
+    appButton.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter" ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                openOSPopup();
+
+            }
+
+        }
     );
 
 }
