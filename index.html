@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
 
 <meta charset="UTF-8">
@@ -9,200 +10,866 @@
     content="width=device-width, initial-scale=1.0, viewport-fit=cover"
 >
 
-<title>VaiperX Panel</title>
+<meta name="theme-color" content="#030303">
+
+<title>VAIPERX PANEL</title>
+
 
 <style>
 
-/* ========================================
+/* =========================================================
+   VAIPERX PREMIUM CYBER PANEL
+   BLACK / RED / FILLED ICON
+========================================================= */
+
+
+/* =========================================================
    RESET
-======================================== */
+========================================================= */
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 html,
 body {
-    margin: 0;
-    padding: 0;
 
     width: 100%;
     height: 100%;
 
-    background: #000;
-
-    overflow: hidden;
 }
 
 body {
-    display: flex;
 
-    justify-content: center;
-    align-items: center;
+    overflow: hidden;
+
+    background: #020202;
+
+    color: #ffffff;
 
     font-family:
         Arial,
         "Noto Sans Thai",
         "Tahoma",
         sans-serif;
-}
-
-
-/* ========================================
-   MAIN UI
-======================================== */
-
-.ui {
-
-    position: relative;
-
-    width: 100vw;
-    height: 100vh;
-
-    max-width: 600px;
-
-    background-color: #000;
-
-    /* ====================================
-       พื้นหลัง UI - ลิงก์ใหม่
-    ==================================== */
-
-    background-image:
-        url("https://i.postimg.cc/WzZ13MFy/cmd-r-pph-nhl-ng.png");
-
-    background-size: cover;
-
-    background-position: center;
-
-    background-repeat: no-repeat;
-
-    overflow: hidden;
-}
-
-
-/* ========================================
-   CLICKABLE BUTTON AREA
-======================================== */
-
-.hotspot {
-
-    position: absolute;
-
-    left: 7%;
-
-    width: 86%;
-
-    height: 7.8%;
-
-    border-radius: 30px;
-
-    background: transparent;
-
-    text-decoration: none;
-
-    cursor: pointer;
-
-    transition:
-        transform 0.2s ease;
-
-    -webkit-tap-highlight-color: transparent;
-
-    z-index: 10;
-}
-
-
-/* ========================================
-   BUTTON POSITIONS
-======================================== */
-
-
-/* ปุ่ม 1
-   เว็บยืนยันคีย์
-*/
-
-.key {
-
-    top: 46.8%;
 
 }
 
 
-/* ปุ่ม 2
-   ดาวน์โหลดแอป
-*/
+/* =========================================================
+   MAIN APP
+========================================================= */
 
 .app {
 
-    top: 60.2%;
+    position: relative;
+
+    width: 100%;
+
+    height: 100dvh;
+
+    min-height: 100vh;
+
+    overflow: hidden;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background:
+
+        radial-gradient(
+            ellipse at 50% -10%,
+            rgba(255, 0, 45, 0.25),
+            transparent 42%
+        ),
+
+        radial-gradient(
+            ellipse at 0% 100%,
+            rgba(180, 0, 30, 0.16),
+            transparent 38%
+        ),
+
+        radial-gradient(
+            ellipse at 100% 70%,
+            rgba(255, 0, 50, 0.12),
+            transparent 36%
+        ),
+
+        linear-gradient(
+            145deg,
+            #010101 0%,
+            #090909 48%,
+            #020202 100%
+        );
 
 }
 
 
-/* ปุ่ม 3
-   คลิปสอน
-*/
+/* =========================================================
+   CYBER GRID
+========================================================= */
 
-.tutorial {
-
-    top: 71.6%;
-
-}
-
-
-/* ========================================
-   BUTTON EFFECT
-======================================== */
-
-.hotspot::after {
-
-    content: "";
+.grid {
 
     position: absolute;
 
-    inset: 0;
+    inset: -100px;
 
-    border-radius: 30px;
+    opacity: 0.22;
+
+    background-image:
+
+        linear-gradient(
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.035) 1px,
+            transparent 1px
+        );
+
+    background-size:
+        42px 42px;
+
+    transform:
+        perspective(500px)
+        rotateX(58deg)
+        scale(1.7);
+
+    transform-origin:
+        center bottom;
+
+    mask-image:
+        linear-gradient(
+            to top,
+            black,
+            transparent 75%
+        );
+
+    pointer-events: none;
+
+}
+
+
+/* =========================================================
+   LARGE RED ORB
+========================================================= */
+
+.red-orb {
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    left: 50%;
+    top: 18%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
 
     background:
-        rgba(255,255,255,0.10);
+
+        radial-gradient(
+            circle,
+            rgba(255,0,45,0.18) 0%,
+            rgba(255,0,45,0.07) 28%,
+            transparent 68%
+        );
+
+    filter:
+        blur(10px);
+
+    animation:
+        orbPulse 5s ease-in-out infinite;
+
+    pointer-events: none;
+
+}
+
+
+@keyframes orbPulse {
+
+    0%,
+    100% {
+        transform:
+            translate(-50%, -50%)
+            scale(0.95);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            scale(1.08);
+        opacity: 1;
+    }
+
+}
+
+
+/* =========================================================
+   DECORATIVE RINGS
+========================================================= */
+
+.ring {
+
+    position: absolute;
+
+    left: 50%;
+    top: 30%;
+
+    transform:
+        translate(-50%, -50%);
+
+    border-radius: 50%;
 
     border:
         1px solid
-        rgba(255,255,255,0.35);
+        rgba(255, 0, 40, 0.09);
+
+    pointer-events: none;
+
+}
+
+
+.ring-1 {
+
+    width: 390px;
+    height: 390px;
+
+}
+
+
+.ring-2 {
+
+    width: 620px;
+    height: 620px;
+
+    border-color:
+        rgba(255,255,255,0.025);
+
+}
+
+
+.ring-3 {
+
+    width: 850px;
+    height: 850px;
+
+    border-color:
+        rgba(255,0,40,0.045);
+
+}
+
+
+/* =========================================================
+   SCAN LINE
+========================================================= */
+
+.scan-line {
+
+    position: absolute;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 1px;
+
+    top: -10%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,0,45,0.5),
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(255,0,45,0.35);
+
+    animation:
+        scan 8s linear infinite;
+
+    pointer-events: none;
+
+}
+
+
+@keyframes scan {
+
+    0% {
+        top: -10%;
+    }
+
+    100% {
+        top: 110%;
+    }
+
+}
+
+
+/* =========================================================
+   PARTICLES
+========================================================= */
+
+.particle {
+
+    position: absolute;
+
+    width: 3px;
+    height: 3px;
+
+    border-radius: 50%;
+
+    background: #ff1739;
+
+    box-shadow:
+        0 0 8px #ff1739,
+        0 0 16px rgba(255,0,40,0.7);
+
+    animation:
+        particleFloat 6s linear infinite;
+
+    pointer-events: none;
+
+}
+
+
+.p1 {
+    left: 8%;
+    top: 25%;
+}
+
+.p2 {
+    left: 18%;
+    top: 75%;
+    animation-delay: 1s;
+}
+
+.p3 {
+    left: 86%;
+    top: 20%;
+    animation-delay: 2s;
+}
+
+.p4 {
+    left: 92%;
+    top: 60%;
+    animation-delay: 3s;
+}
+
+.p5 {
+    left: 45%;
+    top: 12%;
+    animation-delay: 1.5s;
+}
+
+.p6 {
+    left: 72%;
+    top: 87%;
+    animation-delay: 4s;
+}
+
+.p7 {
+    left: 30%;
+    top: 50%;
+    animation-delay: 2.5s;
+}
+
+.p8 {
+    left: 58%;
+    top: 65%;
+    animation-delay: 3.5s;
+}
+
+
+@keyframes particleFloat {
+
+    0% {
+        transform:
+            translateY(35px)
+            scale(0.5);
+
+        opacity: 0;
+    }
+
+    25% {
+        opacity: 0.8;
+    }
+
+    75% {
+        opacity: 0.8;
+    }
+
+    100% {
+        transform:
+            translateY(-80px)
+            scale(1.15);
+
+        opacity: 0;
+    }
+
+}
+
+
+/* =========================================================
+   SIDE DECORATIONS
+========================================================= */
+
+.side-line {
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 32%;
+
+    top: 34%;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            rgba(255,0,40,0.55),
+            transparent
+        );
+
+    box-shadow:
+        0 0 10px
+        rgba(255,0,40,0.3);
+
+    pointer-events: none;
+
+}
+
+
+.side-line.left {
+    left: 4%;
+}
+
+.side-line.right {
+    right: 4%;
+}
+
+
+/* =========================================================
+   CONTENT
+========================================================= */
+
+.content {
+
+    position: relative;
+
+    z-index: 10;
+
+    width:
+        min(92%, 520px);
+
+    max-height:
+        96vh;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.logo {
+
+    font-family:
+        Arial Black,
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(42px, 13vw, 72px);
+
+    font-weight:
+        1000;
+
+    font-style:
+        italic;
+
+    letter-spacing:
+        -4px;
+
+    line-height:
+        0.85;
+
+    color:
+        #f5f5f5;
+
+    -webkit-text-stroke:
+        1px #ffffff;
+
+    text-shadow:
+
+        3px 3px 0 #680013,
+
+        6px 6px 0 #210006,
+
+        0 0 12px
+        rgba(255,0,45,0.8),
+
+        0 0 35px
+        rgba(255,0,45,0.3);
+
+}
+
+
+.logo span {
+
+    color:
+        #ff1739;
+
+    -webkit-text-stroke:
+        1px #ff5169;
+
+}
+
+
+/* =========================================================
+   PANEL TITLE
+========================================================= */
+
+.panel-title {
+
+    margin-top:
+        9px;
+
+    font-size:
+        clamp(17px, 4.5vw, 25px);
+
+    font-weight:
+        900;
+
+    letter-spacing:
+        8px;
+
+    text-align:
+        center;
+
+    color:
+        #ffffff;
+
+    text-shadow:
+        0 0 15px
+        rgba(255,0,40,0.55);
+
+}
+
+
+/* =========================================================
+   SUBTITLE
+========================================================= */
+
+.subtitle {
+
+    margin-top:
+        9px;
+
+    margin-bottom:
+        22px;
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        3px;
+
+    color:
+        #666;
+
+    text-align:
+        center;
+
+}
+
+
+.subtitle span {
+
+    color:
+        #ff193b;
+
+}
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section {
+
+    width: 100%;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        10px;
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.section::before,
+.section::after {
+
+    content: "";
+
+    height: 1px;
+
+    flex: 1;
+
+}
+
+
+.section::before {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,0,40,0.55)
+        );
+
+}
+
+
+.section::after {
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255,0,40,0.55),
+            transparent
+        );
+
+}
+
+
+.section-label {
+
+    font-size:
+        9px;
+
+    letter-spacing:
+        3px;
+
+    color:
+        #666;
+
+}
+
+
+/* =========================================================
+   BUTTON LIST
+========================================================= */
+
+.buttons {
+
+    width: 100%;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        12px;
+
+}
+
+
+/* =========================================================
+   MENU BUTTON
+========================================================= */
+
+.menu-button {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    min-height:
+        78px;
+
+    padding:
+        10px 15px;
+
+    border-radius:
+        21px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(35,35,35,0.88),
+            rgba(8,8,8,0.94)
+        );
+
+    color:
+        #fff;
+
+    text-decoration:
+        none;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    cursor:
+        pointer;
+
+    overflow:
+        hidden;
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
 
     box-shadow:
 
-        0 0 20px
-        rgba(255,255,255,0.25),
+        inset 0 1px 0
+        rgba(255,255,255,0.08),
 
-        inset 0 0 15px
-        rgba(255,255,255,0.08);
-
-    opacity: 0;
+        0 10px 35px
+        rgba(0,0,0,0.5);
 
     transition:
-        all 0.2s ease;
-
-    pointer-events: none;
-}
-
-
-/* ========================================
-   HOVER
-======================================== */
-
-.hotspot:hover::after {
-
-    opacity: 1;
+        0.2s ease;
 
 }
 
 
-/* ========================================
-   CLICK
-======================================== */
+/* =========================================================
+   BUTTON RED GLOW
+========================================================= */
 
-.hotspot:active {
+.menu-button::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    left: 0;
+    top: 12%;
+
+    width: 3px;
+    height: 76%;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            to bottom,
+            transparent,
+            #ff1739,
+            transparent
+        );
+
+    box-shadow:
+        0 0 14px #ff1739;
+
+}
+
+
+/* =========================================================
+   BUTTON TOP HIGHLIGHT
+========================================================= */
+
+.menu-button::after {
+
+    content: "";
+
+    position:
+        absolute;
+
+    left: 10%;
+    right: 10%;
+    top: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,0.16),
+            transparent
+        );
+
+}
+
+
+/* =========================================================
+   BUTTON HOVER
+========================================================= */
+
+.menu-button:hover {
+
+    transform:
+        translateY(-3px);
+
+    border-color:
+        rgba(255,23,57,0.65);
+
+    box-shadow:
+
+        0 0 25px
+        rgba(255,0,40,0.16),
+
+        inset 0 0 25px
+        rgba(255,0,40,0.04),
+
+        0 14px 35px
+        rgba(0,0,0,0.6);
+
+}
+
+
+.menu-button:active {
 
     transform:
         scale(0.97);
@@ -210,103 +877,330 @@ body {
 }
 
 
-.hotspot:active::after {
+/* =========================================================
+   FILLED ICON BOX
+========================================================= */
 
-    opacity: 1;
+.icon-box {
 
-    background:
-        rgba(255,255,255,0.16);
+    position:
+        relative;
 
-    box-shadow:
-
-        0 0 35px
-        rgba(255,255,255,0.7),
-
-        inset 0 0 20px
-        rgba(255,255,255,0.2);
-
-}
-
-
-/* ========================================
-   POPUP OVERLAY
-======================================== */
-
-.popup-overlay {
-
-    position: fixed;
-
-    inset: 0;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    background:
-        rgba(0,0,0,0.78);
-
-    backdrop-filter:
-        blur(9px);
-
-    -webkit-backdrop-filter:
-        blur(9px);
-
-    z-index: 9999;
-}
-
-
-/* ========================================
-   SHOW POPUP
-======================================== */
-
-.popup-overlay.show {
-
-    display: flex;
-
-}
-
-
-/* ========================================
-   POPUP BOX
-======================================== */
-
-.popup {
+    flex-shrink:
+        0;
 
     width:
-        min(90vw, 360px);
+        54px;
 
-    padding:
-        27px 22px 22px;
+    height:
+        54px;
+
+    margin-right:
+        15px;
 
     border-radius:
-        24px;
+        17px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
 
     background:
 
         linear-gradient(
             145deg,
-            rgba(38,38,38,0.98),
-            rgba(4,4,4,0.99)
+            #3b3b3b,
+            #101010
         );
 
     border:
         1px solid
-        rgba(255,255,255,0.25);
+        rgba(255,255,255,0.18);
 
     box-shadow:
 
-        0 0 45px
+        inset 2px 2px 6px
         rgba(255,255,255,0.12),
 
-        inset 0 0 25px
-        rgba(255,255,255,0.04);
+        inset -3px -3px 7px
+        rgba(0,0,0,0.9),
+
+        0 5px 0 #050505,
+
+        0 0 18px
+        rgba(255,0,40,0.18);
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.menu-button:hover .icon-box {
+
+    transform:
+        translateY(-1px)
+        scale(1.05);
+
+    box-shadow:
+
+        inset 2px 2px 6px
+        rgba(255,255,255,0.12),
+
+        inset -3px -3px 7px
+        rgba(0,0,0,0.9),
+
+        0 5px 0 #050505,
+
+        0 0 25px
+        rgba(255,0,40,0.4);
+
+}
+
+
+/* =========================================================
+   SVG FILLED ICON
+========================================================= */
+
+.filled-icon {
+
+    width:
+        29px;
+
+    height:
+        29px;
+
+    fill:
+        #ffffff;
+
+    filter:
+        drop-shadow(
+            0 2px 2px rgba(0,0,0,0.7)
+        );
+
+}
+
+
+/* =========================================================
+   BUTTON TEXT
+========================================================= */
+
+.button-info {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+}
+
+
+.button-title {
+
+    font-size:
+        clamp(15px, 4.5vw, 19px);
+
+    font-weight:
+        900;
+
+    line-height:
+        1.25;
+
+    color:
+        #ffffff;
+
+}
+
+
+.button-subtitle {
+
+    margin-top:
+        5px;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        1.8px;
+
+    color:
+        #686868;
+
+}
+
+
+/* =========================================================
+   ARROW
+========================================================= */
+
+.arrow {
+
+    flex-shrink:
+        0;
+
+    width:
+        35px;
+
+    height:
+        35px;
+
+    margin-left:
+        8px;
+
+    border-radius:
+        50%;
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    color:
+        #ffffff;
+
+    font-size:
+        23px;
+
+    background:
+        rgba(255,0,40,0.10);
+
+    border:
+        1px solid
+        rgba(255,0,40,0.35);
+
+    box-shadow:
+        0 0 14px
+        rgba(255,0,40,0.15);
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+
+    margin-top:
+        17px;
+
+    color:
+        #444;
+
+    font-size:
+        8px;
+
+    letter-spacing:
+        2.5px;
 
     text-align:
         center;
+
+}
+
+
+.footer span {
+
+    color:
+        #a70b25;
+
+}
+
+
+/* =========================================================
+   POPUP
+========================================================= */
+
+.popup-overlay {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        9999;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        20px;
+
+    background:
+        rgba(0,0,0,0.84);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+}
+
+
+.popup-overlay.show {
+
+    display:
+        flex;
+
+}
+
+
+/* =========================================================
+   POPUP BOX
+========================================================= */
+
+.popup {
+
+    position:
+        relative;
+
+    width:
+        min(92vw, 390px);
+
+    padding:
+        30px 22px 22px;
+
+    border-radius:
+        25px;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.16);
+
+    background:
+
+        linear-gradient(
+            145deg,
+            #181818,
+            #050505
+        );
+
+    box-shadow:
+
+        0 0 60px
+        rgba(255,0,40,0.2),
+
+        inset 0 0 35px
+        rgba(255,255,255,0.025);
 
     transform:
         scale(0.85);
@@ -315,13 +1209,10 @@ body {
         0;
 
     transition:
-        all 0.25s ease;
+        0.25s ease;
+
 }
 
-
-/* ========================================
-   POPUP ANIMATION
-======================================== */
 
 .popup-overlay.show .popup {
 
@@ -330,17 +1221,109 @@ body {
 
     opacity:
         1;
+
 }
 
 
-/* ========================================
+/* =========================================================
+   POPUP RED TOP
+========================================================= */
+
+.popup::before {
+
+    content: "";
+
+    position:
+        absolute;
+
+    top:
+        0;
+
+    left:
+        15%;
+
+    width:
+        70%;
+
+    height:
+        2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff1739,
+            transparent
+        );
+
+    box-shadow:
+        0 0 15px #ff1739;
+
+}
+
+
+/* =========================================================
+   POPUP CLOSE
+========================================================= */
+
+.popup-close {
+
+    position:
+        absolute;
+
+    top:
+        13px;
+
+    right:
+        14px;
+
+    width:
+        34px;
+
+    height:
+        34px;
+
+    border-radius:
+        50%;
+
+    border:
+        1px solid
+        rgba(255,255,255,0.12);
+
+    background:
+        rgba(255,255,255,0.05);
+
+    color:
+        #777;
+
+    font-size:
+        21px;
+
+    cursor:
+        pointer;
+
+}
+
+
+.popup-close:hover {
+
+    color:
+        #ffffff;
+
+    border-color:
+        rgba(255,0,40,0.5);
+
+}
+
+
+/* =========================================================
    POPUP TITLE
-======================================== */
+========================================================= */
 
 .popup-title {
 
-    color:
-        #fff;
+    text-align:
+        center;
 
     font-size:
         23px;
@@ -348,37 +1331,35 @@ body {
     font-weight:
         900;
 
-    letter-spacing:
-        1px;
+    color:
+        #fff;
 
-    margin-bottom:
-        7px;
 }
 
-
-/* ========================================
-   POPUP SUBTITLE
-======================================== */
 
 .popup-subtitle {
 
-    color:
-        #999;
-
-    font-size:
-        14px;
-
-    line-height:
-        1.5;
+    margin-top:
+        7px;
 
     margin-bottom:
-        22px;
+        18px;
+
+    text-align:
+        center;
+
+    color:
+        #777;
+
+    font-size:
+        12px;
+
 }
 
 
-/* ========================================
+/* =========================================================
    OS BUTTON
-======================================== */
+========================================================= */
 
 .os-button {
 
@@ -386,24 +1367,24 @@ body {
         100%;
 
     min-height:
-        58px;
+        61px;
 
     margin-top:
-        12px;
+        11px;
+
+    border-radius:
+        17px;
 
     border:
         1px solid
-        rgba(255,255,255,0.25);
-
-    border-radius:
-        16px;
+        rgba(255,255,255,0.15);
 
     background:
 
         linear-gradient(
-            135deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.04)
+            145deg,
+            #303030,
+            #0d0d0d
         );
 
     color:
@@ -413,86 +1394,83 @@ body {
         17px;
 
     font-weight:
-        800;
+        900;
 
     cursor:
         pointer;
 
-    transition:
-        all 0.2s ease;
-
     box-shadow:
 
-        0 0 15px
-        rgba(255,255,255,0.05);
+        inset 2px 2px 5px
+        rgba(255,255,255,0.08),
 
-    -webkit-tap-highlight-color:
-        transparent;
+        inset -3px -3px 7px
+        rgba(0,0,0,0.9),
+
+        0 5px 0 #050505;
+
+    transition:
+        0.18s ease;
+
 }
 
-
-/* ========================================
-   OS BUTTON HOVER
-======================================== */
 
 .os-button:hover {
 
-    background:
-        rgba(255,255,255,0.18);
-
     border-color:
-        rgba(255,255,255,0.55);
+        rgba(255,0,40,0.65);
 
     box-shadow:
 
-        0 0 25px
-        rgba(255,255,255,0.18);
+        0 0 22px
+        rgba(255,0,40,0.2),
+
+        inset 0 0 18px
+        rgba(255,0,40,0.06);
 
     transform:
         translateY(-2px);
+
 }
 
-
-/* ========================================
-   OS BUTTON CLICK
-======================================== */
 
 .os-button:active {
 
     transform:
-        scale(0.97);
+        translateY(3px);
+
 }
 
 
-/* ========================================
-   CLOSE BUTTON
-======================================== */
+/* =========================================================
+   CANCEL BUTTON
+========================================================= */
 
-.close-button {
+.cancel-button {
 
     width:
         100%;
 
-    min-height:
-        45px;
+    height:
+        44px;
 
     margin-top:
-        18px;
+        16px;
 
     border:
         0;
 
     border-radius:
-        14px;
+        13px;
 
     background:
-        rgba(255,255,255,0.06);
+        rgba(255,255,255,0.045);
 
     color:
-        #888;
+        #777;
 
     font-size:
-        14px;
+        13px;
 
     font-weight:
         700;
@@ -500,88 +1478,186 @@ body {
     cursor:
         pointer;
 
-    transition:
-        all 0.2s ease;
-
-    -webkit-tap-highlight-color:
-        transparent;
 }
 
 
-/* ========================================
-   CLOSE HOVER
-======================================== */
-
-.close-button:hover {
+.cancel-button:hover {
 
     color:
         #fff;
 
     background:
-        rgba(255,255,255,0.10);
+        rgba(255,255,255,0.08);
+
 }
 
 
-/* ========================================
-   RESPONSIVE
-======================================== */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
-    .ui {
+    .content {
 
         width:
-            100vw;
+            90%;
 
-        height:
-            100vh;
-
-        background-size:
-            cover;
-
-        background-position:
-            center;
-    }
-}
-
-
-/* ========================================
-   SMALL HEIGHT DEVICES
-======================================== */
-
-@media (max-height: 650px) {
-
-    .popup {
-
-        max-height:
-            90vh;
-
-        overflow-y:
-            auto;
     }
 
-    .os-button {
+    .logo {
+
+        font-size:
+            49px;
+
+    }
+
+    .panel-title {
+
+        font-size:
+            18px;
+
+        letter-spacing:
+            6px;
+
+    }
+
+    .subtitle {
+
+        margin-bottom:
+            18px;
+
+    }
+
+    .menu-button {
 
         min-height:
-            52px;
+            70px;
+
+        border-radius:
+            18px;
+
+        padding:
+            8px 13px;
+
     }
+
+    .icon-box {
+
+        width:
+            48px;
+
+        height:
+            48px;
+
+        margin-right:
+            12px;
+
+    }
+
+    .filled-icon {
+
+        width:
+            26px;
+
+        height:
+            26px;
+
+    }
+
+    .button-title {
+
+        font-size:
+            15px;
+
+    }
+
+    .button-subtitle {
+
+        font-size:
+            7px;
+
+    }
+
+    .arrow {
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+    }
+
 }
 
 
-/* ========================================
-   IOS / MOBILE SAFE AREA
-======================================== */
+/* =========================================================
+   SHORT SCREEN
+========================================================= */
 
-@supports (padding: env(safe-area-inset-top)) {
+@media (max-height: 680px) {
 
-    .popup-overlay {
+    .content {
 
-        padding-top:
-            calc(20px + env(safe-area-inset-top));
+        transform:
+            scale(0.88);
+
+    }
+
+    .buttons {
+
+        gap:
+            9px;
+
+    }
+
+    .menu-button {
+
+        min-height:
+            63px;
+
+    }
+
+    .footer {
+
+        margin-top:
+            9px;
+
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL SCREEN
+========================================================= */
+
+@media (max-height: 560px) {
+
+    .content {
+
+        transform:
+            scale(0.78);
+
+    }
+
+}
+
+
+/* =========================================================
+   SAFE AREA
+========================================================= */
+
+@supports (padding: env(safe-area-inset-bottom)) {
+
+    .content {
 
         padding-bottom:
-            calc(20px + env(safe-area-inset-bottom));
+            env(safe-area-inset-bottom);
+
     }
+
 }
 
 </style>
@@ -592,61 +1668,315 @@ body {
 <body>
 
 
-<!-- ========================================
-     MAIN UI
-======================================== -->
+<!-- =========================================================
+     APP BACKGROUND
+========================================================= -->
 
-<div class="ui">
-
-
-    <!-- ====================================
-         BUTTON 1
-         เว็บยืนยันคีย์
-    ===================================== -->
-
-    <a
-        class="hotspot key"
-        href="https://client.nulldash.store/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="เว็บยืนยันคีย์"
-    ></a>
+<div class="app">
 
 
-    <!-- ====================================
-         BUTTON 2
-         ดาวน์โหลดแอป
-    ===================================== -->
+    <div class="grid"></div>
 
-    <div
-        class="hotspot app"
-        onclick="openOSPopup()"
-        role="button"
-        tabindex="0"
-        aria-label="ดาวน์โหลดแอป"
-    ></div>
+    <div class="red-orb"></div>
+
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+
+    <div class="scan-line"></div>
+
+    <div class="side-line left"></div>
+    <div class="side-line right"></div>
 
 
-    <!-- ====================================
-         BUTTON 3
-         คลิปสอน
-    ===================================== -->
+    <!-- PARTICLES -->
 
-    <a
-        class="hotspot tutorial"
-        href="https://youtu.be/BqrmISOIIMU?si=9Y6i5avz0wAeJcuj"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="คลิปสอนลงและใช้งาน"
-    ></a>
+    <div class="particle p1"></div>
+    <div class="particle p2"></div>
+    <div class="particle p3"></div>
+    <div class="particle p4"></div>
+    <div class="particle p5"></div>
+    <div class="particle p6"></div>
+    <div class="particle p7"></div>
+    <div class="particle p8"></div>
+
+
+    <!-- =====================================================
+         CONTENT
+    ====================================================== -->
+
+    <main class="content">
+
+
+        <!-- LOGO -->
+
+        <div class="logo">
+
+            VAIPER<span>X</span>
+
+        </div>
+
+
+        <div class="panel-title">
+
+            PANEL
+
+        </div>
+
+
+        <div class="subtitle">
+
+            <span>PREMIUM</span>
+            &nbsp;•&nbsp;
+            CYBER GAMING
+            &nbsp;•&nbsp;
+            OFFICIAL
+
+        </div>
+
+
+        <!-- SECTION -->
+
+        <div class="section">
+
+            <div class="section-label">
+                VAIPERX MENU
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             BUTTONS
+        ================================================== -->
+
+        <div class="buttons">
+
+
+            <!-- =================================================
+                 BUTTON 1 — KEY
+            ================================================== -->
+
+            <a
+                class="menu-button"
+                href="https://client.nulldash.store/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon-box">
+
+                    <!-- FILLED KEY ICON -->
+
+                    <svg
+                        class="filled-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path d="
+                            M7.5 14
+                            A4.5 4.5 0 1 1
+                            10.9 12.45
+                            L22 1.35
+                            V5
+                            H19
+                            V8
+                            H16
+                            V11
+                            H12.55
+                            A4.5 4.5 0 0 1
+                            7.5 14
+                            Z
+
+                            M7.5 12
+                            A2.5 2.5 0 1 0
+                            7.5 7
+                            A2.5 2.5 0 0 0
+                            7.5 12
+                            Z
+                        "/>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="button-info">
+
+                    <div class="button-title">
+                        เว็บยืนยันคีย์
+                    </div>
+
+                    <div class="button-subtitle">
+                        KEY VERIFICATION
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </a>
+
+
+            <!-- =================================================
+                 BUTTON 2 — APP
+            ================================================== -->
+
+            <button
+                class="menu-button"
+                type="button"
+                onclick="openOSPopup()"
+            >
+
+                <div class="icon-box">
+
+                    <!-- FILLED SMARTPHONE ICON -->
+
+                    <svg
+                        class="filled-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path d="
+                            M7 2
+                            C5.9 2 5 2.9 5 4
+                            V20
+                            C5 21.1 5.9 22 7 22
+                            H17
+                            C18.1 22 19 21.1 19 20
+                            V4
+                            C19 2.9 18.1 2 17 2
+                            H7
+                            Z
+
+                            M9 4
+                            H15
+                            C15.55 4 16 4.45 16 5
+                            C16 5.55 15.55 6 15 6
+                            H9
+                            C8.45 6 8 5.55 8 5
+                            C8 4.45 8.45 4 9 4
+                            Z
+
+                            M12 20.5
+                            A1.5 1.5 0 1 0
+                            12 17.5
+                            A1.5 1.5 0 0 0
+                            12 20.5
+                            Z
+                        "/>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="button-info">
+
+                    <div class="button-title">
+                        ลิงก์แอป
+                    </div>
+
+                    <div class="button-subtitle">
+                        DOWNLOAD APPLICATION
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </button>
+
+
+            <!-- =================================================
+                 BUTTON 3 — TUTORIAL
+            ================================================== -->
+
+            <a
+                class="menu-button"
+                href="https://youtu.be/BqrmISOIIMU?si=9Y6i5avz0wAeJcuj"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="icon-box">
+
+                    <!-- FILLED PLAY ICON -->
+
+                    <svg
+                        class="filled-icon"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+
+                        <path d="
+                            M8 5.14
+                            V18.86
+                            C8 19.65 8.87 20.13 9.54 19.7
+                            L19.54 13.34
+                            C20.18 12.93 20.18 12.07 19.54 11.66
+                            L9.54 5.3
+                            C8.87 4.87 8 5.35 8 6.14
+                            V5.14
+                            Z
+                        "/>
+
+                    </svg>
+
+                </div>
+
+
+                <div class="button-info">
+
+                    <div class="button-title">
+                        คลิปสอนลงและสอนใช้งาน
+                    </div>
+
+                    <div class="button-subtitle">
+                        INSTALL &amp; USAGE TUTORIAL
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <div class="footer">
+
+            <span>VAIPERX</span>
+            &nbsp;•&nbsp;
+            PREMIUM GAMING PANEL
+
+        </div>
+
+
+    </main>
 
 
 </div>
 
 
-<!-- ========================================
+<!-- =========================================================
      OS POPUP
-======================================== -->
+========================================================= -->
 
 <div
     class="popup-overlay"
@@ -661,6 +1991,20 @@ body {
     >
 
 
+        <!-- CLOSE -->
+
+        <button
+            class="popup-close"
+            type="button"
+            onclick="closeOSPopup()"
+            aria-label="ปิด"
+        >
+
+            ×
+
+        </button>
+
+
         <!-- TITLE -->
 
         <div class="popup-title">
@@ -670,18 +2014,16 @@ body {
         </div>
 
 
-        <!-- SUBTITLE -->
-
         <div class="popup-subtitle">
 
-            กรุณาเลือกอุปกรณ์ที่ต้องการดาวน์โหลด
+            เลือกอุปกรณ์ที่ต้องการดาวน์โหลด
 
         </div>
 
 
-        <!-- =================================
+        <!-- =================================================
              IOS
-        ================================== -->
+        ================================================== -->
 
         <button
             class="os-button"
@@ -689,14 +2031,14 @@ body {
             onclick="openIOS()"
         >
 
-            🍎 &nbsp; iOS
+             &nbsp; iOS
 
         </button>
 
 
-        <!-- =================================
+        <!-- =================================================
              ANDROID
-        ================================== -->
+        ================================================== -->
 
         <button
             class="os-button"
@@ -704,17 +2046,15 @@ body {
             onclick="openAndroid()"
         >
 
-            🤖 &nbsp; Android
+            Android
 
         </button>
 
 
-        <!-- =================================
-             CLOSE
-        ================================== -->
+        <!-- CANCEL -->
 
         <button
-            class="close-button"
+            class="cancel-button"
             type="button"
             onclick="closeOSPopup()"
         >
@@ -731,31 +2071,37 @@ body {
 
 <script>
 
-/* ========================================
+/* =========================================================
    OPEN POPUP
-======================================== */
+========================================================= */
 
 function openOSPopup() {
 
     const popup =
         document.getElementById("osPopup");
 
-    if (!popup) return;
+    if (!popup) {
+        return;
+    }
 
     popup.classList.add("show");
+
 }
 
 
-/* ========================================
+/* =========================================================
    CLOSE POPUP
-======================================== */
+========================================================= */
 
 function closeOSPopup(event) {
 
     const popup =
         document.getElementById("osPopup");
 
-    if (!popup) return;
+    if (!popup) {
+        return;
+    }
+
 
     if (
         event &&
@@ -763,15 +2109,18 @@ function closeOSPopup(event) {
     ) {
 
         return;
+
     }
 
+
     popup.classList.remove("show");
+
 }
 
 
-/* ========================================
-   OPEN IOS
-======================================== */
+/* =========================================================
+   IOS
+========================================================= */
 
 function openIOS() {
 
@@ -782,12 +2131,13 @@ function openIOS() {
         url,
         "_blank"
     );
+
 }
 
 
-/* ========================================
-   OPEN ANDROID
-======================================== */
+/* =========================================================
+   ANDROID
+========================================================= */
 
 function openAndroid() {
 
@@ -798,12 +2148,13 @@ function openAndroid() {
         url,
         "_blank"
     );
+
 }
 
 
-/* ========================================
+/* =========================================================
    ESC TO CLOSE
-======================================== */
+========================================================= */
 
 document.addEventListener(
     "keydown",
@@ -821,37 +2172,38 @@ document.addEventListener(
 );
 
 
-/* ========================================
-   APP BUTTON KEYBOARD SUPPORT
-======================================== */
+/* =========================================================
+   PREVENT DOUBLE TAP ZOOM
+========================================================= */
 
-const appButton =
-    document.querySelector(".hotspot.app");
+let lastTouchEnd = 0;
 
-if (appButton) {
+document.addEventListener(
+    "touchend",
+    function(event) {
 
-    appButton.addEventListener(
-        "keydown",
-        function(event) {
+        const now =
+            Date.now();
 
-            if (
-                event.key === "Enter" ||
-                event.key === " "
-            ) {
+        if (
+            now - lastTouchEnd <= 300
+        ) {
 
-                event.preventDefault();
-
-                openOSPopup();
-
-            }
+            event.preventDefault();
 
         }
-    );
 
-}
+        lastTouchEnd = now;
+
+    },
+    {
+        passive: false
+    }
+);
 
 </script>
 
 
 </body>
+
 </html>
